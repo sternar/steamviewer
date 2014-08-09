@@ -1,92 +1,381 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+<!-- saved from url=(0037)http://localhost:8383/test/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Steam DB Jul 2014</title>
 
-  <title>Steamviewer</title>
-  <meta name="description" content="SteamDB viewer JUL">
+	<link href="http://store.akamai.steamstatic.com/public/shared/css/shared_global.css?v=Rtpdmi1pX9NN" rel="stylesheet" type="text/css">
+<link href="http://store.akamai.steamstatic.com/public/css/styles_storev5.css?v=Zyf6A40n61wO" rel="stylesheet" type="text/css">
+<!--[if lte IE 6]> <link href="http://store.akamai.steamstatic.com/public/css/styles_storev5_ie6.css?v=sEaT8nRDvs3H" rel="stylesheet" type="text/css" >
+ <![endif]-->
+<!--[if lte IE 7]> <style type="text/css"> .iepopupfix{ display: block; } </style> <![endif]-->
+<link href="http://store.akamai.steamstatic.com/public/css/styles_store_ru.css?v=.UarHqkq6hDEi" rel="stylesheet" type="text/css">
+	<link href="http://store.akamai.steamstatic.com/public/css/styles_searchv5.css?v=MBq8er6yZIn6" rel="stylesheet" type="text/css">
+	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" src="http://store.akamai.steamstatic.com/public/javascript/swfobject.js?v=.IJPsm1EB98JP"></script><style type="text/css"></style>
+  <style>
+   .butt {
+    margin-left: 10px;
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+   }
+  </style>
 
+        
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script>
+    var incAction = false;
+    var incRPG = false;
+    var incStrategy = false;
+</script>
 </head>
 
 <body>
+    <h2>Include: </h2>
+<form action="" method="get">
+    <INPUT type="checkbox" id="incAction" name="incAction" class="butt" value="true">Action
+    <INPUT type="checkbox" id="incRPG" name="incRPG" class="butt" value="true">RPG
+    <INPUT type="checkbox" id="incStrategy" class="butt" name="incStrategy" value="true">Strategy
+    <INPUT type="checkbox" id="incAdventure" class="butt" name="incAdventure" value="true">Adventure
+    <INPUT type="checkbox" id="incSim" class="butt" name="incSim" value="true">Simulation
+    <INPUT type="checkbox" id="incRacing" class="butt" name="incRacing" value="true">Racing<BR>
+    <INPUT type="checkbox" id="incSports" name="incSports" class="butt" value="true">Sport
+    <INPUT type="checkbox" id="incIndie" name="incIndie" class="butt" value="true">Indie
+    <INPUT type="checkbox" id="incCasual" class="butt" name="incCasual" value="true">Casual
+    <INPUT type="checkbox" id="incEarly" class="butt" name="incEarly" value="true">Early Access
+    <INPUT type="checkbox" id="incF2P" class="butt" name="incF2P" value="true">F2P
+    <INPUT type="checkbox" id="incMMO" class="butt" name="incMMO" value="true">MMO<BR>
+    <INPUT type="text" id="minimumMeta" name="minimumMeta" size="1" value="">Minumum metascore<BR>
+    <h2>Exclude: </h2>
+    <INPUT type="checkbox" id="excAction" name="excAction" class="butt" value="true">Action
+    <INPUT type="checkbox" id="excRPG" name="excRPG" class="butt" value="true">RPG
+    <INPUT type="checkbox" id="excStrategy" class="butt" name="excStrategy" value="true">Strategy
+    <INPUT type="checkbox" id="excAdventure" class="butt" name="excAdventure" value="true">Adventure
+    <INPUT type="checkbox" id="excSim" class="butt" name="excSim" value="true">Simulation
+    <INPUT type="checkbox" id="excRacing" class="butt" name="excRacing" value="true">Racing<BR>
+    <INPUT type="checkbox" id="excSports" name="excSports" class="butt" value="true">Sport
+    <INPUT type="checkbox" id="excIndie" name="excIndie" class="butt" value="true">Indie
+    <INPUT type="checkbox" id="excCasual" class="butt" name="excCasual" value="true">Casual
+    <INPUT type="checkbox" id="excEarly" class="butt" name="excEarly" value="true">Early Access
+    <INPUT type="checkbox" id="excF2P" class="butt" name="excF2P" value="true">F2P
+    <INPUT type="checkbox" id="excMMO" class="butt" name="excMMO" value="true">MMO<BR>
+    <INPUT type="submit" id="go" value="Search"><BR>
+</form>
+<div id="debug" ></div>
 
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Steamviewer</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">SteamDB viewer JUL</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/sternar/steamviewer/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/sternar/steamviewer/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/sternar/steamviewer" class="code">View Steamviewer on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </article>
-      </div>
-    </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/sternar" class="avatar"><img src="https://avatars2.githubusercontent.com/u/8400851?v=2&amp;s=60" width="48" height="48"></a> <a href="https://github.com/sternar">sternar</a> maintains <a href="https://github.com/sternar/steamviewer">Steamviewer</a></p>
+<div id="gameslist" hidden="hidden">
 
 
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/sternar/steamviewer/tarball/master" class="tar">tar</a><a href="https://github.com/sternar/steamviewer/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
 
-  
+
+</div>
+
+
+
+
+<div id="populated"></div>
+<script>
+    
+
+
+</script>
+
 </body>
+
+
+<script>
+
+function check(){
+
+
+    incAction = "false";
+    incRPG = "false";
+    incStrategy = "false";
+    incAdventure = "false";
+    incSim = "false";
+    incRacing = "false";
+    incSports = "false";
+    incIndie = "false";
+    incCasual = "false";
+    incEarly = "false";
+    incF2P = "false";
+    incMMO = "false";
+    minimumMeta = 0;
+    excAction = "false";
+    excRPG = "false";
+    excStrategy = "false";
+    excAdventure = "false";
+    excSim = "false";
+    excRacing = "false";
+    excSports = "false";
+    excIndie = "false";
+    excCasual = "false";
+    excEarly = "false";
+    excF2P = "false";
+    excMMO = "false";
+
+var input = $(" input[name=minimumMeta]").val();
+if (parseInt(input) < 0 || parseInt(input) > 100){minimumMeta = 0;}
+else if (isNaN(parseInt(input))){minimumMeta = 0;}
+else {minimumMeta = parseInt(input);}
+
+var input = $(" input[name=incAction]:checked ").val();
+if (input == "true"){incAction = "true";}
+
+var input = $(" input[name=incRPG]:checked ").val();
+if (input == "true"){incRPG = "true";}
+
+var input = $(" input[name=incStrategy]:checked ").val();
+if (input == "true"){incStrategy = "true";}
+
+var input = $(" input[name=incAdventure]:checked ").val();
+if (input == "true"){incAdventure = "true";}
+
+var input = $(" input[name=incSim]:checked ").val();
+if (input == "true"){incSim = "true";}
+
+var input = $(" input[name=incRacing]:checked ").val();
+if (input == "true"){incRacing = "true";}
+
+var input = $(" input[name=incSports]:checked ").val();
+if (input == "true"){incSports = "true";}
+
+var input = $(" input[name=incIndie]:checked ").val();
+if (input == "true"){incIndie = "true";}
+
+var input = $(" input[name=incCasual]:checked ").val();
+if (input == "true"){incCasual = "true";}
+
+var input = $(" input[name=incEarly]:checked ").val();
+if (input == "true"){incEarly = "true";}
+
+var input = $(" input[name=incF2P]:checked ").val();
+if (input == "true"){incF2P = "true";}
+
+var input = $(" input[name=incMMO]:checked ").val();
+if (input == "true"){incMMO = "true";}
+
+var input = $(" input[name=excAction]:checked ").val();
+if (input == "true"){excAction = "true";}
+
+var input = $(" input[name=excRPG]:checked ").val();
+if (input == "true"){excRPG = "true";}
+
+var input = $(" input[name=excStrategy]:checked ").val();
+if (input == "true"){excStrategy = "true";}
+
+var input = $(" input[name=excAdventure]:checked ").val();
+if (input == "true"){excAdventure = "true";}
+
+var input = $(" input[name=excSim]:checked ").val();
+if (input == "true"){excSim = "true";}
+
+var input = $(" input[name=excRacing]:checked ").val();
+if (input == "true"){excRacing = "true";}
+
+var input = $(" input[name=excSports]:checked ").val();
+if (input == "true"){excSports = "true";}
+
+var input = $(" input[name=excIndie]:checked ").val();
+if (input == "true"){excIndie = "true";}
+
+var input = $(" input[name=excCasual]:checked ").val();
+if (input == "true"){excCasual = "true";}
+
+var input = $(" input[name=excEarly]:checked ").val();
+if (input == "true"){excEarly = "true";}
+
+var input = $(" input[name=excF2P]:checked ").val();
+if (input == "true"){excF2P = "true";}
+
+var input = $(" input[name=excMMO]:checked ").val();
+if (input == "true"){excMMO = "true";}
+
+var res = incAction + incRPG + incStrategy + incAdventure + incSim + incRacing + incSports + incIndie + incCasual + incEarly + incF2P + incMMO + minimumMeta
+    + excAction + excRPG + excStrategy + excAdventure + excSim + excRacing + excSports + excIndie + excCasual + excEarly + excF2P + excMMO;
+$("#debug").text(res);
+  
+};
+ 
+function findMatch(descText, genre){
+
+if (descText.search(genre) > 0){return true;}
+else {return false;}
+}
+
+function findFits(descStr){
+    fits = true;
+
+if (incAction == "true"){
+    found = findMatch(descStr, "Action");
+    if (found == false){fits = found;
+    return fits;}
+}
+if (incRPG == "true"){
+    found = findMatch(descStr, "RPG");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incStrategy == "true"){
+    found = findMatch(descStr, "Strategy");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incAdventure == "true"){
+    found = findMatch(descStr, "Adventure");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incSim == "true"){
+    found = findMatch(descStr, "Simulation");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incRacing == "true"){
+    found = findMatch(descStr, "Racing");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incSports == "true"){
+    found = findMatch(descStr, "Sports");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incIndie == "true"){
+    found = findMatch(descStr, "Indie");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incCasual == "true"){
+    found = findMatch(descStr, "Casual");
+    if (found == false){fits = found;
+        return fits;}
+}
+if (incEarly == "true"){
+    found = findMatch(descStr, "Early");
+    if (found == false){fits = found;
+    return fits;}
+}
+if (incF2P == "true"){
+    found = findMatch(descStr, "Free");
+    if (found == false){fits = found;
+    return fits;}
+}
+if (incMMO == "true"){
+    found = findMatch(descStr, "Massively");
+    if (found == false){fits = found;
+    return fits;}
+}
+return fits;
+}
+
+
+function findExc(descStr){
+    fits = false;
+
+if (excAction == "true"){
+    found = findMatch(descStr, "Action");
+    if (found == true){fits = found;}
+}
+if (excRPG == "true"){
+    found = findMatch(descStr, "RPG");
+    if (found == true){fits = found;}
+}
+if (excStrategy == "true"){
+    found = findMatch(descStr, "Strategy");
+    if (found == true){fits = found;}
+}
+if (excAdventure == "true"){
+    found = findMatch(descStr, "Adventure");
+    if (found == true){fits = found;}
+}
+if (excSim == "true"){
+    found = findMatch(descStr, "Simulation");
+    if (found == true){fits = found;}
+}
+if (excRacing == "true"){
+    found = findMatch(descStr, "Racing");
+    if (found == true){fits = found;}
+}
+if (excSports == "true"){
+    found = findMatch(descStr, "Sports");
+    if (found == true){fits = found;}
+}
+if (excIndie == "true"){
+    found = findMatch(descStr, "Indie");
+    if (found == true){fits = found;}
+}
+if (excCasual == "true"){
+    found = findMatch(descStr, "Casual");
+    if (found == true){fits = found;}
+}
+if (excEarly == "true"){
+    found = findMatch(descStr, "Early");
+    if (found == true){fits = found;}
+}
+if (excF2P == "true"){
+    found = findMatch(descStr, "Free");
+    if (found == true){fits = found;}
+}
+if (excMMO == "true"){
+    found = findMatch(descStr, "Massively");
+    if (found == true){fits = found;}
+}
+<!-- alert(fits); -->
+return fits;
+}
+</script>
+
+<script>
+$( "#go" ).click(function( event ) {
+event.preventDefault();
+$("#populated").empty();
+gamesNumber = ($('a').get().length);
+
+
+check();
+
+var j=0;
+var i;
+for (i=0; i<gamesNumber; i++){
+    
+game = $('a').get(i);
+desc = $( game ).find( "p" );
+descStr = desc.text();
+
+
+var fits = findFits(descStr);
+if (fits == true){
+   $(game).clone().appendTo( "#populated"); 
+   j++;
+}
+}
+
+<!-- alert(j); -->
+var k=0;
+var rem=0;
+for (i=0;i<j;i++){
+game = $("#populated").find("a").get(k);
+desc = $( game ).find( "p" );
+meta = $( game ).children().eq(2);
+metanum = meta.text();
+<!-- alert(metanum); -->
+descStr = desc.text();
+var fits = findExc(descStr);
+if (fits == true){
+   $(game).remove();
+   k--;
+   rem++;
+}
+   else if (metanum < minimumMeta){
+   $(game).remove();
+   k--;
+   rem++;
+}
+   k++;
+<!-- alert(i) -->
+<!-- alert(descStr); -->
+}
+$("#debug").text("Found: " + j + "   Filtered: " + rem);
+<!-- alert(rem); -->
+});
+
+</script>
 </html>
