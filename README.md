@@ -1,4 +1,0 @@
-steamviewer
-===========
-
-SteamDB viewer JUL
